@@ -5,13 +5,18 @@ app.use(express.static(__dirname + '/public'));
 var io = require('socket.io').listen(app.listen(port));
 var mongoose = require('mongoose');
 console.log("Chat app server initialized. please open: http://127.0.0.1:"+port);
-mongoose.connect('mongodb://localhost/instantchat3', function(err){
+
+mongoose.connect('mongodb://localhost/instantchatapp', function(err){
   if(err) {
     console.log(err);
+    console.log('try changing the port')
   } else {
     console.log('Connected to mongodb!');
   }
 });
+
+//if default port doesnt work please try changing the port like this
+// mongoose.connect('mongodb://localhost/chatapp:portno') 
 
 var chat_table = mongoose.Schema({
   nick_name: String,
