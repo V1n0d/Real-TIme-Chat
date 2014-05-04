@@ -1,0 +1,56 @@
+doctype
+html
+    head
+        title= "Real Time Chat"
+        link(href='/css/bootstrap.css',rel='stylesheet')
+        link(href='/css/style.css',rel='stylesheet')
+        script(src='/js/lib/jquery.js')
+        script(src='/socket.io/socket.io.js')
+        script(src='/js/lib/bootstrap.js')
+
+    body
+        .navbar.navbar-inverse.navbar-fixed-top
+            .container-fluid
+                .navbar-header
+                    a.navbar-brand
+                        ="Real Time Chat"
+
+        .container-fluid
+            .row
+                .col-sm-3.col-md-2.sidebar
+                    span.user_count 
+                    .nav.nav-sidebar.users_list
+
+                .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+                    h2 Chat Room
+                        .all-msgs
+                        .clearfix
+                            textarea.message-box
+                            button.btn.btn-primary.join-chat Send Message
+
+
+        div.modal.fade("aria-hidden" = "true", "id"="user_info", "aria-labelledby" = "myModalLabel", "role" = "dialog", "data-backdrop"="static","data-keyboard"="false","tabindex" = "-1")
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  button.close("aria-hidden" = "true", "data-dismiss" = "modal", "type" = "button")
+                  h4.modal-title User Information
+                .modal-body
+                  form.form-horizontal
+                    .form-group
+                        label.col-sm-2.control-label NickName
+                        .col-sm-10
+                            input#nick_name(class="form-control", placeholder="Enter Your Nickname")
+                    .form-group
+                        label.col-sm-2.control-label Location
+                        .col-sm-10
+                            input#location(class="form-control", placeholder="Enter Your Location")
+                .modal-footer
+                    button.btn.btn-primary.user_info Join Chat
+
+
+        script(src='/js/chat.js')
+
+            
+
+      
